@@ -1,12 +1,13 @@
-<div class="text-center">
+<div class="text-center" *ngIf="currentWeaher">
     <h1 class="mt-4">Weather App</h1>
     <div class="card mt-5">
         <div class="card-body">
-            <h5 class="card-title">City</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Date</h6>
+            <h5 class="card-title">{{weather.city.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{weather.list[0].dt_txt}}</h6>
             <p class="card-text">
-                <app-weather></app-weather>
+                <app-weather [weatherMain]="currentWeaher.weather[0].main"></app-weather>
             </p>
+            <h3 class="card-title">{{cTemp}}°C</h3>
         </div>
         <div class="card-body">
             <div class="week-container">
