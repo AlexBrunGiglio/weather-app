@@ -7,12 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class WeatherComponent implements OnInit {
 
-  @Input() weatherMain: "Clouds" | "Sun" | "Rain";
+  @Input() weatherMain: "Clouds" | "Clear" | "Rain" | "Thunderstorm" | "Drizzle" | "Snow";
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.weatherMain);
+    // console.log(this.weatherMain);
   }
 
 }

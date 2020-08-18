@@ -1,4 +1,4 @@
-export interface WeatherInterface {
+export interface WeatherWeekInterface {
     city: {
         coord: {
             lat: string;

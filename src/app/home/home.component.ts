@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../weather-api.service';
-import { WeatherInterface, WeatherListInterface } from './weather-interface';
+import { WeatherWeekInterface, WeatherListInterface } from './weather-week-interface';
+import { WeatherDayInterface } from './weather-day-interface';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,14 @@ import { WeatherInterface, WeatherListInterface } from './weather-interface';
 })
 export class HomeComponent implements OnInit {
 
-  weather: WeatherInterface;
-  currentWeaher: WeatherListInterface;
+  weatherDay: WeatherDayInterface;
+  weatherWeek: WeatherWeekInterface;
+  weekWeather: WeatherListInterface;
   cTemp: string;
+  cTempMin: string;
+  cTempMax: string;
+  sunrise: string;
+  sunset: string;
 
   constructor(private weatherService: WeatherApiService) { }
 
@@ -20,11 +26,33 @@ export class HomeComponent implements OnInit {
   }
 
   async load() {
-    this.weather = await this.weatherService.getWeatherWeek().toPromise();
 
-    this.currentWeaher = this.weather.list[0];
+    this.weatherDay = await this.weatherService.getWeatherToDay().toPromise();
+    this.weatherWeek = await this.weatherService.getWeatherWeek().toPromise();
 
-    this.cTemp = this.fTempTocTemp(this.currentWeaher.main.temp).toFixed(0)
+    console.log(this.weatherWeek.list);
+
+
+    this.cTemp = this.fTempTocTemp(this.weatherDay.main.temp).toFixed(0);
+    this.cTempMin = this.fTempTocTemp(this.weatherDay.main.temp_min).toFixed(0);
+    this.cTempMax = this.fTempTocTemp(this.weatherDay.main.temp_max).toFixed(0);
+
+    this.sunrise = this.convertTimer(this.weatherDay.sys.sunrise);
+    this.sunset = this.convertTimer(this.weatherDay.sys.sunset);
+
+
+  }
+
+  convertTimer(timer: number) {
+    let convertedTime: string;
+    let date = new Date(timer * 1000);
+    let hours = date.getHours();
+    let min = "0" + date.getMinutes();
+    if (hours < 10)
+      convertedTime = '0' + hours + 'h' + min.substr(-2)
+    else
+      convertedTime = hours + 'h' + min.substr(-2);
+    return convertedTime;
   }
 
   fTempTocTemp(fTemp: number) {
