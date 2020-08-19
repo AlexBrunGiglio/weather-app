@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   weatherDay: WeatherDayInterface;
   weatherWeek: WeatherWeekInterface;
   weekWeather: WeatherListInterface;
+  weatherWeekList: Array<{ itemList: {} }>;
   cTemp: string;
   cTempMin: string;
   cTempMax: string;
@@ -29,9 +30,8 @@ export class HomeComponent implements OnInit {
   async load() {
 
     this.weatherDay = await this.weatherService.getWeatherToDay().toPromise();
-    this.weatherWeek = await this.weatherService.getWeatherWeek().toPromise();
+    this.weatherWeek = await this.weatherService.getWeatherWeek().toPromise()
 
-    console.log(this.weatherWeek.list);
 
 
     this.cTemp = this.fTempTocTemp(this.weatherDay.main.temp).toFixed(0);
@@ -41,8 +41,20 @@ export class HomeComponent implements OnInit {
     this.sunrise = this.convertTimer(this.weatherDay.sys.sunrise);
     this.sunset = this.convertTimer(this.weatherDay.sys.sunset);
 
+    for (let i = 1; i <= 5; i++) {
+      this.weatherWeekList = [
+        { itemList: this.weatherWeek.list[i] },
+      ];
+    }
+    let test = this.weatherWeekList.map(x => x.itemList);
+    console.log(test);
+
+
+
 
   }
+
+
 
   async changeDisplay() {
     if (this.testeur === false) {

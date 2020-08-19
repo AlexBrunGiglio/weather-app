@@ -18,7 +18,9 @@
                 <button class="button button-small" (click)="changeDisplay()"><i
                         class="fas fa-chevron-down"></i></button>
             </div>
-            <div class="mt-2">
+            <div class="mt-2" *ngFor="let item of weatherWeekList">
+                <span class="subtle">{{item.itemList.dt}}</span>
+                <!-- <app-info-weather [weatherMainWeek]="weatherWeek.list[1].weather[0].main"></app-info-weather> -->
 
             </div>
         </div>

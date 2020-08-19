@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-info-weather',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-weather.component.scss']
 })
 export class InfoWeatherComponent implements OnInit {
+  @Input() weatherMainWeek: "Clouds" | "Clear" | "Rain" | "Thunderstorm" | "Drizzle" | "Snow";
 
   constructor() { }
 
