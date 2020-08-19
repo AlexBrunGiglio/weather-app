@@ -1,35 +1,3 @@
-<!-- <div class="text-center" *ngIf="weatherDay.weather[0].description">
-    <h1 class="mt-4">Weather App</h1>
-    <div class="card mt-5">
-        <div class="card-body">
-            <h4 class="card-title">{{weatherDay.name}}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">{{weatherDay.weather[0].description}}</h6>
-            <p class="card-text">
-                <app-weather [weatherMain]="weatherDay.weather[0].main"></app-weather>
-            </p>
-            <h3 class="card-title">{{cTemp}}°C</h3>
-        </div>
-        <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <div class="card-text week-container mt-5">
-                <ul class="week-list mx-auto">
-                    <li class="">
-                        <img height="30px" src="http://openweathermap.org/img/wn/{{weatherDay.weather[0].icon}}@2x.png">
-                        <span class="day-name">Tue</span><span class="day-temp">29°C</span>
-                    </li>
-                    <li><i class="day-icon" data-feather="cloud"></i><span class="day-name">Wed</span><span
-                            class="day-temp">21°C</span></li>
-                    <li><i class="day-icon" data-feather="cloud-snow"></i><span class="day-name">Thu</span><span
-                            class="day-temp">08°C</span></li>
-                    <li><i class="day-icon" data-feather="cloud-snow"></i><span class="day-name">Thu</span><span
-                            class="day-temp">08°C</span></li>
-                    <div class="clear"></div>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="app-container">
     <div class="app-top-bar">
         <!-- <button class="button button-small">
@@ -40,17 +8,8 @@
     <div class="app-content">
         <button class="button button-block">
             <span class="subtle">Météo</span>
-            <!-- <app-weather></app-weather> -->
-            <div class="rotate-center">
-                <svg style="color: #fd7e14;" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-sun"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.5 8a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z" />
-                    <path fill-rule="evenodd"
-                        d="M8.202.28a.25.25 0 0 0-.404 0l-.91 1.255a.25.25 0 0 1-.334.067L5.232.79a.25.25 0 0 0-.374.155l-.36 1.508a.25.25 0 0 1-.282.19l-1.532-.245a.25.25 0 0 0-.286.286l.244 1.532a.25.25 0 0 1-.189.282l-1.509.36a.25.25 0 0 0-.154.374l.812 1.322a.25.25 0 0 1-.067.333l-1.256.91a.25.25 0 0 0 0 .405l1.256.91a.25.25 0 0 1 .067.334L.79 10.768a.25.25 0 0 0 .154.374l1.51.36a.25.25 0 0 1 .188.282l-.244 1.532a.25.25 0 0 0 .286.286l1.532-.244a.25.25 0 0 1 .282.189l.36 1.508a.25.25 0 0 0 .374.155l1.322-.812a.25.25 0 0 1 .333.067l.91 1.256a.25.25 0 0 0 .405 0l.91-1.256a.25.25 0 0 1 .334-.067l1.322.812a.25.25 0 0 0 .374-.155l.36-1.508a.25.25 0 0 1 .282-.19l1.532.245a.25.25 0 0 0 .286-.286l-.244-1.532a.25.25 0 0 1 .189-.282l1.508-.36a.25.25 0 0 0 .155-.374l-.812-1.322a.25.25 0 0 1 .067-.333l1.256-.91a.25.25 0 0 0 0-.405l-1.256-.91a.25.25 0 0 1-.067-.334l.812-1.322a.25.25 0 0 0-.155-.374l-1.508-.36a.25.25 0 0 1-.19-.282l.245-1.532a.25.25 0 0 0-.286-.286l-1.532.244a.25.25 0 0 1-.282-.189l-.36-1.508a.25.25 0 0 0-.374-.155l-1.322.812a.25.25 0 0 1-.333-.067L8.203.28zM8 2.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z" />
-                </svg>
-            </div>
-
-            <div class="button button-small"><i class="fas fa-chevron-right"></i></div>
+            <app-weather [weatherMain]="weatherDay.weather[0].main"></app-weather>
+            <div class="button button-small"><i class="fas fa-chevron-down"></i></div>
         </button>
 
         <div class="button button-dial">
@@ -76,22 +35,34 @@
         </div>
         <div class="flex-button-container">
             <button class="button button-large">
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="snowflake" class="color-cool"
+                <!-- <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="snowflake" class="color-cool"
                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path fill="currentColor"
                         d="M440.1 355.2l-39.2-23 34.1-9.3c8.4-2.3 13.4-11.1 11.1-19.6l-4.1-15.5c-2.2-8.5-10.9-13.6-19.3-11.3L343 298.2 271.2 256l71.9-42.2 79.7 21.7c8.4 2.3 17-2.8 19.3-11.3l4.1-15.5c2.2-8.5-2.7-17.3-11.1-19.6l-34.1-9.3 39.2-23c7.5-4.4 10.1-14.2 5.8-21.9l-7.9-13.9c-4.3-7.7-14-10.3-21.5-5.9l-39.2 23 9.1-34.7c2.2-8.5-2.7-17.3-11.1-19.6l-15.2-4.1c-8.4-2.3-17 2.8-19.3 11.3l-21.3 81-71.9 42.2v-84.5L306 70.4c6.1-6.2 6.1-16.4 0-22.6l-11.1-11.3c-6.1-6.2-16.1-6.2-22.2 0l-24.9 25.4V16c0-8.8-7-16-15.7-16h-15.7c-8.7 0-15.7 7.2-15.7 16v46.1l-24.9-25.4c-6.1-6.2-16.1-6.2-22.2 0L142.1 48c-6.1 6.2-6.1 16.4 0 22.6l58.3 59.3v84.5l-71.9-42.2-21.3-81c-2.2-8.5-10.9-13.6-19.3-11.3L72.7 84c-8.4 2.3-13.4 11.1-11.1 19.6l9.1 34.7-39.2-23c-7.5-4.4-17.1-1.8-21.5 5.9l-7.9 13.9c-4.3 7.7-1.8 17.4 5.8 21.9l39.2 23-34.1 9.1c-8.4 2.3-13.4 11.1-11.1 19.6L6 224.2c2.2 8.5 10.9 13.6 19.3 11.3l79.7-21.7 71.9 42.2-71.9 42.2-79.7-21.7c-8.4-2.3-17 2.8-19.3 11.3l-4.1 15.5c-2.2 8.5 2.7 17.3 11.1 19.6l34.1 9.3-39.2 23c-7.5 4.4-10.1 14.2-5.8 21.9L10 391c4.3 7.7 14 10.3 21.5 5.9l39.2-23-9.1 34.7c-2.2 8.5 2.7 17.3 11.1 19.6l15.2 4.1c8.4 2.3 17-2.8 19.3-11.3l21.3-81 71.9-42.2v84.5l-58.3 59.3c-6.1 6.2-6.1 16.4 0 22.6l11.1 11.3c6.1 6.2 16.1 6.2 22.2 0l24.9-25.4V496c0 8.8 7 16 15.7 16h15.7c8.7 0 15.7-7.2 15.7-16v-46.1l24.9 25.4c6.1 6.2 16.1 6.2 22.2 0l11.1-11.3c6.1-6.2 6.1-16.4 0-22.6l-58.3-59.3v-84.5l71.9 42.2 21.3 81c2.2 8.5 10.9 13.6 19.3 11.3L375 428c8.4-2.3 13.4-11.1 11.1-19.6l-9.1-34.7 39.2 23c7.5 4.4 17.1 1.8 21.5-5.9l7.9-13.9c4.6-7.5 2.1-17.3-5.5-21.7z">
                     </path>
-                </svg>
-                {{sunrise}}
+                </svg> -->
+                <div class="mx-auto weather-icon sunrise"></div>
+                <div class="mx-auto text-sun">
+                    <p>Levé</p>
+                </div>
+                <div class="mx-auto">
+                    {{sunrise}}
+                </div>
             </button>
             <button class="button button-large">
-                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="fire-alt" class="color-warm"
+                <!-- <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="fire-alt" class="color-warm"
                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path fill="currentColor"
                         d="M323.56 51.2c-20.8 19.3-39.58 39.59-56.22 59.97C240.08 73.62 206.28 35.53 168 0 69.74 91.17 0 209.96 0 281.6 0 408.85 100.29 512 224 512s224-103.15 224-230.4c0-53.27-51.98-163.14-124.44-230.4zm-19.47 340.65C282.43 407.01 255.72 416 226.86 416 154.71 416 96 368.26 96 290.75c0-38.61 24.31-72.63 72.79-130.75 6.93 7.98 98.83 125.34 98.83 125.34l58.63-66.88c4.14 6.85 7.91 13.55 11.27 19.97 27.35 52.19 15.81 118.97-33.43 153.42z">
                     </path>
-                </svg>
-                {{sunset}}
+                </svg> -->
+                <div class="mx-auto weather-icon sunset"></div>
+                <div class="mx-auto text-sun">
+                    <p>Couché</p>
+                </div>
+                <div class="mx-auto">
+                    {{sunset}}
+                </div>
             </button>
         </div>
         <button class="button button-link">
