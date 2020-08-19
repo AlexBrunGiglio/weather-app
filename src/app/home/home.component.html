@@ -6,11 +6,22 @@
         <h1 class="app-heading">{{weatherDay.name}}</h1>
     </div>
     <div class="app-content">
-        <button class="button button-block">
+        <div *ngIf="!testeur" class="button button-block">
             <span class="subtle">Météo</span>
             <app-weather [weatherMain]="weatherDay.weather[0].main"></app-weather>
-            <div class="button button-small"><i class="fas fa-chevron-down"></i></div>
-        </button>
+            <button class="button button-small" (click)="changeDisplay()"><i class="fas fa-chevron-down"></i></button>
+        </div>
+        <div *ngIf="testeur" class="button button-large" style="height: 500px; width: auto;" (click)="changeDisplay()">
+            <div class="inside-button-block">
+                <span class="subtle">Météo</span>
+                <app-weather [weatherMain]="weatherDay.weather[0].main"></app-weather>
+                <button class="button button-small" (click)="changeDisplay()"><i
+                        class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="mt-2">
+
+            </div>
+        </div>
 
         <div class="button button-dial">
 
@@ -65,7 +76,7 @@
                 </div>
             </button>
         </div>
-        <button class="button button-link">
+        <button class="button button-link" routerLink='/info'>
             Plus d'informations
         </button>
     </div>

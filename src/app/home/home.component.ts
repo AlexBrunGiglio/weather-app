@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   cTempMax: string;
   sunrise: string;
   sunset: string;
+  testeur: boolean = false;
 
   constructor(private weatherService: WeatherApiService) { }
 
@@ -41,6 +42,15 @@ export class HomeComponent implements OnInit {
     this.sunset = this.convertTimer(this.weatherDay.sys.sunset);
 
 
+  }
+
+  async changeDisplay() {
+    if (this.testeur === false) {
+      this.testeur = true;
+    }
+    else {
+      this.testeur = false;
+    }
   }
 
   convertTimer(timer: number) {

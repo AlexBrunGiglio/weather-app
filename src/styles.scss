@@ -233,6 +233,17 @@ body{
       font-size: 16px;
     }
   }
+
+  .inside-button-block {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    span {
+      font-size: 16px;
+    }
+  }
   
   .subtle {
     color: #6D6E74;

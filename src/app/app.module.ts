@@ -7,13 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { WeatherComponent } from './weather/weather.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DarkHomeComponent } from './dark-home/dark-home.component';
+import { InfoWeatherComponent } from './info-weather/info-weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     WeatherComponent,
-    DarkHomeComponent
+    DarkHomeComponent,
+    InfoWeatherComponent
   ],
   imports: [
     BrowserModule,
