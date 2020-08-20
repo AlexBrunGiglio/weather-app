@@ -13,13 +13,16 @@ export class HomeComponent implements OnInit {
   weatherDay: WeatherDayInterface;
   weatherWeek: WeatherWeekInterface;
   weekWeather: WeatherListInterface;
+  weatherMain;
   weatherWeekList: Array<{ itemList: {} }>;
   cTemp: string;
   cTempMin: string;
   cTempMax: string;
   sunrise: string;
   sunset: string;
-  testeur: boolean = false;
+  moreInfo: boolean = false;
+  speed: number;
+  feels: string;
 
   constructor(private weatherService: WeatherApiService) { }
 
@@ -31,10 +34,11 @@ export class HomeComponent implements OnInit {
 
     this.weatherDay = await this.weatherService.getWeatherToDay().toPromise();
     this.weatherWeek = await this.weatherService.getWeatherWeek().toPromise()
-
+    this.weatherMain = this.weatherDay.main;
 
 
     this.cTemp = this.fTempTocTemp(this.weatherDay.main.temp).toFixed(0);
+    this.feels = this.fTempTocTemp(this.weatherDay.main.feels_like).toFixed(0);
     this.cTempMin = this.fTempTocTemp(this.weatherDay.main.temp_min).toFixed(0);
     this.cTempMax = this.fTempTocTemp(this.weatherDay.main.temp_max).toFixed(0);
 
@@ -49,19 +53,20 @@ export class HomeComponent implements OnInit {
     let test = this.weatherWeekList.map(x => x.itemList);
     console.log(test);
 
-
-
-
+    this.speed = await this.convertMStoKMH(this.weatherDay.wind.speed);
   }
 
-
+  async convertMStoKMH(speedMS) {
+    let speedConverted = (speedMS * (60 * 60)) / 1000;
+    return speedConverted
+  }
 
   async changeDisplay() {
-    if (this.testeur === false) {
-      this.testeur = true;
+    if (this.moreInfo === false) {
+      this.moreInfo = true;
     }
     else {
-      this.testeur = false;
+      this.moreInfo = false;
     }
   }
 
