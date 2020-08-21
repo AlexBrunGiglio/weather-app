@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   sunrise: string;
   sunset: string;
   moreInfo: boolean = false;
+  weekInfo: boolean = false;
   speed: string;
   feels: string;
 
@@ -28,12 +29,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.load();
+    console.log(this.weekInfo);
+
   }
 
   async load() {
 
     this.weatherDay = await this.weatherService.getWeatherToDay().toPromise();
-    this.weatherWeek = await this.weatherService.getWeatherWeek().toPromise()
+    this.weatherWeek = await this.weatherService.getWeatherWeek().toPromise();
     this.weatherMain = this.weatherDay.main;
 
 
@@ -56,12 +59,12 @@ export class HomeComponent implements OnInit {
     this.speed = await (await this.convertMStoKMH(this.weatherDay.wind.speed)).toFixed(1);
   }
 
-  async convertMStoKMH(speedMS) {
+  convertMStoKMH(speedMS) {
     let speedConverted = (speedMS * (60 * 60)) / 1000;
     return speedConverted
   }
 
-  async changeDisplay() {
+  changeDisplay() {
     if (this.moreInfo === false) {
       this.moreInfo = true;
     }
@@ -84,5 +87,14 @@ export class HomeComponent implements OnInit {
 
   fTempTocTemp(fTemp: number) {
     return (fTemp - 273.15);
+  }
+
+  displayWeekInfos() {
+    if (this.weekInfo === false) {
+      this.weekInfo = true;
+    }
+    else {
+      this.weekInfo = false;
+    }
   }
 }

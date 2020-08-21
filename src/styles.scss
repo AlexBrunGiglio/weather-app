@@ -6,24 +6,6 @@ body{
     background-color: #8e919424;
 }
 
-.sun {
-    background-image: linear-gradient(to right top, #400062, #580183, #7203a6, #8d05cb, #a907f0);
-    height: 100vh;
-    color: #ECEAEC;
-}
-
-.snow {
-    background-image: linear-gradient(to right top, #126adc, #007be4, #008bea, #009aee, #07a9f0);
-    height: 100vh;
-    color: #ECEAEC;
-}
-
-.rain {
-    background-image: linear-gradient(to right top, #8ddc12, #72e34d, #55e873, #35ed95, #07f0b3);
-    height: 100vh;
-    color: #ECEAEC;
-}
-
 :root {
     --font-color: #222;
     --bg-color: #f2f3f7;

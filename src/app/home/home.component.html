@@ -91,8 +91,9 @@
                 </div>
             </button>
         </div>
-        <button class="button button-link" routerLink='/info'>
+        <button *ngIf="!weekInfo" (click)="displayWeekInfos()" class="button button-link">
             Plus d'informations
         </button>
+        <app-info-weather *ngIf="weekInfo"></app-info-weather>
     </div>
 </div>
