@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   sunrise: string;
   sunset: string;
   moreInfo: boolean = false;
-  speed: number;
+  speed: string;
   feels: string;
 
   constructor(private weatherService: WeatherApiService) { }
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
     let test = this.weatherWeekList.map(x => x.itemList);
     console.log(test);
 
-    this.speed = await this.convertMStoKMH(this.weatherDay.wind.speed);
+    this.speed = await (await this.convertMStoKMH(this.weatherDay.wind.speed)).toFixed(1);
   }
 
   async convertMStoKMH(speedMS) {
